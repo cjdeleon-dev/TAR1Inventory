@@ -1,0 +1,17 @@
+﻿body {
+    margin: 0 !important;
+    background-image: url('../images/warehouse.jpg');
+    background-size:cover;
+}
+div .frmlogin {
+    /*margin: 200px 20px 20px 20px;*/
+    margin:20px;
+    background: -webkit-linear-gradient(to right, #599fd9, #c2e59c);
+    background: linear-gradient(to right, #599fd9, #c2e59c);
+    overflow-x: hidden;
+    border-radius: 5px;
+    padding: 25px;
+    color: black;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    
+}

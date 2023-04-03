@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - TARELCO-1</title>
+
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/layout_v1.css" rel="stylesheet" />
+    <link href="~/Content/css/sweetalert.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/Content/js/sweetalert.js"></script>
+
+
+</head>
+<body>
+    <!-- Vertical navbar -->
+    <div class="vertical-nav bg-white" id="sidebar">
+        <br />
+        <div class="py-4 px-3 mb-4 bg-light" style="text-align:center;">
+            <div class="media d-flex align-items-center">
+                <div class="media-body">
+                    @{Html.RenderAction("LoggedById","Menu");}
+                    <a href="@Url.Action("Signout","Authentication")" class="nav-link text-dark font-italic bg-light">
+                        <i class="glyphicon glyphicon-log-out mr-3 text-primary fa-fw"></i>
+                        Sign Out
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr style="border-color:darkred;" />
+
+        <p class="text-black-50 font-weight-bold text-uppercase px-3 small pb-4 mb-0 text-center">Main</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="@Url.Action("Index","Dashboard")" class="nav-link text-dark font-italic bg-light">
+                    <i class="glyphicon glyphicon-th-large mr-3 text-primary fa-fw"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("RRStock","RRStock")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-download-alt mr-3 text-primary fa-fw"></i>
+                    RR-Stocks
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("MCTStock","MCTStock")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-shopping-cart mr-3 text-primary fa-fw"></i>
+                    MCT-Stocks
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("MCRTStock","MCRTStock")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-import mr-3 text-primary fa-fw"></i>
+                    MCRT-Stocks
+                </a>
+            </li>
+        </ul>
+        <br />
+        <p class="text-black-50 font-weight-bold text-uppercase px-3 small py-4 mb-0 text-center">MANAGEMENT</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="@Url.Action("Users","Management")" class="nav-link text-dark font-italic">
+                    <i class=" glyphicon glyphicon-user mr-3 text-primary fa-fw"></i>
+                    Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Stocks","Management")" class="nav-link text-dark font-italic bg-light">
+                    <i class="glyphicon glyphicon-star mr-3 text-primary fa-fw"></i>
+                    Stocks
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Suppliers","Management")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-inbox mr-3 text-primary fa-fw"></i>
+                    Suppliers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Units","Management")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-euro mr-3 text-primary fa-fw"></i>
+                    Units
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Departments","Management")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-tower mr-3 text-primary fa-fw"></i>
+                    Departments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Positions","Management")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-flag mr-3 text-primary fa-fw"></i>
+                    Positions
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("JOWOMO","Management")" class="nav-link text-dark font-italic">
+                    <i class="glyphicon glyphicon-tag mr-3 text-primary fa-fw"></i>
+                    JOWOMO
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="page-content p-5" id="content">
+        @RenderBody()
+    </div>
+    
+    </body>
+</html>

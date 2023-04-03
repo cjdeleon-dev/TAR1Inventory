@@ -1,0 +1,38 @@
+﻿@model TARELCO1WAREHOUSE_v2._0._1.Models.UserLoginModel
+
+@{
+    Layout = null;
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/css/login.css" rel="stylesheet" />
+
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="~/Content/images/tarelco1.PNG" height="80%" class="img-responsive" />
+            </div>
+            <div class="col-sm-6" style="height:100%;">
+                @using (Html.BeginForm("Signin", "Authentication", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-offset-4 col-md-8">
+                            <div class="frmlogin">
+                                <h4 class="text-center">Please Sign In</h4>
+                                <hr style="border-color:darkred;" />
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", type = "password" } })
+                                <p></p>
+                                <input type="submit" class="btn btn-primary form-control" value="Sign In" />
+                                <p>@Html.ValidationMessage("CredentialError", new { style = "color:maroon;" })</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

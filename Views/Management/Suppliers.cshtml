@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Suppliers";
+    Layout = "~/Views/Shared/_whlayout.cshtml";
+}
+
+<h4 class="text-center">Supplier Management</h4>
+<hr />
+
+<div class="row">
+    <div class="col-lg-offset-1 col-lg-10">
+        <div class="form-group">
+            @using (Html.BeginForm("SuppliersDataToExcel", "Management", FormMethod.Post))
+            {
+                <button id="btnNewSupplier" type="button" class="btn btn-light bg-success rounded-pill shadow-sm px-4 mb-4">
+                    <i class="glyphicon glyphicon-inbox mr-2"></i><small class="text-uppercase font-weight-bold"> New Supplier</small>
+                </button>
+                <button id="btnExport" type="submit" class="btn btn-light bg-success rounded-pill shadow-sm px-4 mb-4">
+                    <i class="glyphicon glyphicon-export mr-2"></i><small class="text-uppercase font-weight-bold"> Export All Data</small>
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-offset-1 col-lg-10">
+        <table class="table table-hover table-bordered table-responsive" id="tblSuppliers" cellpadding="0" cellspacing="0" border="1" style="border-collapse:collapse">
+            <thead class="bg-primary">
+                <tr>
+                    <th>Id</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(
+        $('#tblSuppliers').DataTable({
+            "ajax": {
+                "url": "/Management/SuppliersData",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { 'data': 'Id', "autoWidth": true, "visible": false },
+                { 'data': 'Name', "autoWidth": true },
+                { 'data': 'Address', "autoWidth": true }
+            ],
+            "aoColumnDefs": [
+                {
+                    "aTargets": [3],
+                    "mData": "Id",
+                    "mRender": function (data, type, full) {
+                        return '<button class="btn btn-primary" style="font-size:smaller;" href="#"' + 'id="' + data + '">Edit</button> | ' +
+                            '<button class="btn btn-warning" style="font-size:smaller;" href="#"' + 'id="' + data + '">Deactivate</button>';
+                    },
+                    "className": "text-center"
+                }
+            ]
+        })
+    );
+
+</script>
+

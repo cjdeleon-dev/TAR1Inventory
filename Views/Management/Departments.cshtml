@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "Departments";
+    Layout = "~/Views/Shared/_whlayout.cshtml";
+}
+
+<script src="~/Content/js/jsManagement_v1.0.1.js"></script>
+
+
+<h4 class="text-center">Department Management</h4>
+<hr />
+
+<div class="row">
+    <div class="col-lg-offset-1 col-lg-10">
+        <div class="form-group">
+            @using (Html.BeginForm("DepartmentsDataToExcel", "Management", FormMethod.Post))
+            {
+                <button id="btnNewDept" type="button" class="btn btn-light bg-success rounded-pill shadow-sm px-4 mb-4">
+                    <i class="glyphicon glyphicon-tower mr-2"></i><small class="text-uppercase font-weight-bold"> New Department</small>
+                </button>
+                <button id="btnExport" type="submit" class="btn btn-light bg-success rounded-pill shadow-sm px-4 mb-4">
+                    <i class="glyphicon glyphicon-export mr-2"></i><small class="text-uppercase font-weight-bold"> Export All Data</small>
+               </button>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-offset-1 col-lg-10">
+
+        <table class="table table-hover table-bordered table-responsive" id="tblDepts" cellpadding="0" cellspacing="0" border="1" style="border-collapse:collapse">
+            <thead class="bg-primary">
+                <tr>
+                    <th>Id</th>
+                    <th class="text-center">Code</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(
+        $('#tblDepts').DataTable({
+            "ajax": {
+                "url": "/Management/DepartmentsData",
+                "type": "GET",
+                "datatype": "json"
+            },
+            "columns": [
+                { 'data': 'Id', "autoWidth": true, "visible": false },
+                { 'data': 'Code', "autoWidth": true },
+                { 'data': 'Description', "autoWidth": true }
+            ],
+            "aoColumnDefs": [
+                {
+                    "aTargets": [3],
+                    "mData": "Id",
+                    "mRender": function (data, type, full) {
+                        return '<button class="btn btn-primary" style="font-size:smaller;" href="#"' + 'id="' + data + '">Edit</button> | ' +
+                            '<button class="btn btn-warning" style="font-size:smaller;" href="#"' + 'id="' + data + '">Deactivate</button>';
+                    },
+                    "className": "text-center"
+                }
+            ]
+        })
+    );
+
+</script>
